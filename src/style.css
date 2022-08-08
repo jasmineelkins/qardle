@@ -1,0 +1,46 @@
+/* FONTS & COLORS ---------------------------------------------------------------------- */
+:root {
+  --background: rgb(3, 85, 3);
+  --text: rgb(207, 205, 205);
+}
+
+/* GENERAL ----------------------------------------------------------------------------- */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--background);
+  color: var(--text);
+}
+
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* HEADER ----------------------------------------------------------------------------- */
+
+/* FAQ BUTTONS ------------------------------------------------------------------------ */
+
+/* QARDLE ----------------------------------------------------------------------------- */
+
+/* GUESSED CARDS ---------------------------------------------------------------------- */
+.guessedCardContainer {
+  border: 1px solid white;
+}
+
+/* BUTTONS ---------------------------------------------------------------------------- */
+
+/* AVAILABLE CARDS -------------------------------------------------------------------- */
+.availableCardsDeckContainer {
+  border: 1px solid white;
+}
+
+/* FOOTER ----------------------------------------------------------------------------- */
+
+/* MEDIA QUERIES ---------------------------------------------------------------------- */
