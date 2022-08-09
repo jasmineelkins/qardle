@@ -2,15 +2,20 @@ import React, { useState } from "react";
 import AvailableCardsDeck from "./components/AvailableCardsDeck";
 import GuessedCardsGrid from "./components/GuessedCardsGrid";
 import Header from "./components/Header";
+import Qardle from "./components/Qardle";
 
-// interface IGoalCards {
-//   goalCards: string[]
-// }
+type APICard = {
+  code: string;
+  image: string;
+  images: { svg: string; png: string };
+  suit: string;
+  value: string;
+};
 
 function App() {
-  // get full deck
-  // set & render available cards
-  // set & render goal cards
+  // get full deck +
+  // set & render available cards +
+  // set & render goal cards +
   // create guess grid
   // add guess
   // remove guess
@@ -21,8 +26,9 @@ function App() {
   // get hint
   // end game
   // populate buttons & onClick functions
+  // show backs of qards until end game
 
-  const [goalCards, setGoalCards] = useState<string[]>([]);
+  const [qardle, setQardle] = useState<APICard[]>([]);
   const [currentGuessArray, setCurrentGuessArray] = useState<string[]>([
     "none",
     "none",
@@ -34,11 +40,12 @@ function App() {
   return (
     <div className="pageContainer">
       <Header />
+      <Qardle qardle={qardle} setQardle={setQardle} />
       <GuessedCardsGrid />
       <AvailableCardsDeck
         currentGuessArray={currentGuessArray}
         setCurrentGuessArray={setCurrentGuessArray}
-        goalCards={goalCards}
+        qardle={qardle}
       />
     </div>
   );

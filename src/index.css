@@ -181,15 +181,17 @@ button.selected {
 }
 
 /* GOAL CARDS -------------------------------------------------------------- */
-.goalBox {
-  border-radius: 10px;
-  height: 60px;
-  padding: 10px 0;
-}
+.qardleContainer {
+  height: 25vh;
+  width: 420px;
 
-#goalCardsDiv {
   display: flex;
   gap: 20px;
+}
+
+.qard img {
+  height: 80px;
+  padding: 0;
 }
 
 .cardBack {
@@ -421,7 +423,6 @@ button.selected {
 }
 
 /* LOSING ANIMATION ------------------------------------------------------- */
-
 .title {
   position: relative;
   text-align: center;

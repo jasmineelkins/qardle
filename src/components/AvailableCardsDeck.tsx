@@ -9,6 +9,7 @@ type APIDeck = {
   shuffled: boolean;
   success: boolean;
 };
+
 type APICard = {
   code: string;
   image: string;
@@ -20,14 +21,14 @@ type APICard = {
 interface Props {
   currentGuessArray: string[];
   setCurrentGuessArray: (p: string[]) => void;
-  goalCards: string[];
+  qardle: APICard[];
 }
 
 // industry standard syntax:
 const AvailableCardsDeck: React.FunctionComponent<Props> = ({
   currentGuessArray,
   setCurrentGuessArray,
-  goalCards,
+  qardle,
 }: Props) => {
   const [availableCards, setAvailableCards] = useState<APICard[]>([]);
 
@@ -40,7 +41,7 @@ const AvailableCardsDeck: React.FunctionComponent<Props> = ({
       const response = await axios.get<APIDeck>("/new");
       const data = response.data;
 
-      console.log(data);
+      // console.log(data);
       getAllCards(data.deck_id);
     } catch (error) {
       console.error(error);
@@ -57,14 +58,14 @@ const AvailableCardsDeck: React.FunctionComponent<Props> = ({
       }>(`/${deckID}/draw/?count=52`);
 
       const data = response.data;
-      console.log(data.cards);
+      // console.log(data.cards);
       setAvailableCards(data.cards);
     } catch (error) {
       console.error(error);
     }
   };
 
-  console.log(availableCards);
+  // console.log(availableCards);
   // const renderedCards = availableCards?.map((card: APICard) => {
   //   <Card card={card} />;
   // });
