@@ -154,6 +154,8 @@ button {
   font-family: "Megrim", "Verdana", sans-serif;
   font-variant: small-caps;
   background-color: rgb(210, 110, 80);
+  padding: 10px;
+  margin: 5px;
 }
 
 button:hover {
