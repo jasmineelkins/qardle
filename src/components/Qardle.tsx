@@ -3,18 +3,18 @@ import Qard from "./Qard";
 import axios from "../axios/instance";
 
 interface Props {
-  qardle: APICard[];
-  setQardle: (p: APICard[]) => void;
+  qardle: Card[];
+  setQardle: (p: Card[]) => void;
 }
 
-type APIDeck = {
+type Deck = {
   deck_id: string;
   remaining: number;
   shuffled: boolean;
   success: boolean;
 };
 
-type APICard = {
+type Card = {
   code: string;
   image: string;
   images: { svg: string; png: string };
@@ -29,7 +29,7 @@ function Qardle({ qardle, setQardle }: Props) {
 
   const getQards = async () => {
     try {
-      const response = await axios.get<APIDeck>(`/new/shuffle/?deck_count=1`);
+      const response = await axios.get<Deck>(`/new/shuffle/?deck_count=1`);
       const data = response.data;
 
       // console.log(data);
@@ -42,7 +42,7 @@ function Qardle({ qardle, setQardle }: Props) {
   const getRandomCards = async (deckID: string) => {
     try {
       const response = await axios.get<{
-        cards: APICard[];
+        cards: Card[];
         deck_id: string;
         remaining: number;
         success: boolean;
@@ -59,7 +59,7 @@ function Qardle({ qardle, setQardle }: Props) {
   return (
     <div className="qardleContainer">
       {qardle
-        ? qardle?.map((card: APICard) => (
+        ? qardle?.map((card: Card) => (
             <Qard key={card.code} code={card.code} image={card.image} />
           ))
         : null}

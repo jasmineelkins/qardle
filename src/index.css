@@ -233,7 +233,7 @@ button.selected {
   margin-top: 60px;
 }
 
-.guessed {
+.guessedCardsGridContainer {
   display: grid;
   grid-template-columns: repeat(5, 60px);
   column-gap: 20px;

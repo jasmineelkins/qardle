@@ -1,9 +1,19 @@
 import React, { useState } from "react";
+import GuessedCard from "./GuessedCard";
+import { CardType } from "myTypes";
 
-function GuessedCardsGrid() {
-  const [currentGuessArray, setCurrentGuessArray] = useState([]);
-
-  return <div className="guessedCardsGridContainer"></div>;
+interface Props {
+  currentGuessArray: CardType[][];
+  setCurrentGuessArray: (p: CardType[][]) => void;
+  qardle: CardType[];
 }
+
+const GuessedCardsGrid: React.FunctionComponent<Props> = ({
+  currentGuessArray,
+  setCurrentGuessArray,
+  qardle,
+}: Props) => {
+  return <div className="guessedCardsGridContainer"></div>;
+};
 
 export default GuessedCardsGrid;

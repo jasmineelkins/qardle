@@ -1,27 +1,19 @@
 import React, { useState, useEffect } from "react";
-import Card from "./Card";
+import AvailableCard from "./AvailableCard";
 import axios from "../axios/instance";
-import { render } from "@testing-library/react";
+import { CardType } from "myTypes";
 
-type APIDeck = {
+type Deck = {
   deck_id: string;
   remaining: number;
   shuffled: boolean;
   success: boolean;
 };
 
-type APICard = {
-  code: string;
-  image: string;
-  images: { svg: string; png: string };
-  suit: string;
-  value: string;
-};
-
 interface Props {
-  currentGuessArray: string[];
-  setCurrentGuessArray: (p: string[]) => void;
-  qardle: APICard[];
+  currentGuessArray: CardType[][];
+  setCurrentGuessArray: (p: CardType[][]) => void;
+  qardle: CardType[];
 }
 
 // industry standard syntax:
@@ -30,7 +22,7 @@ const AvailableCardsDeck: React.FunctionComponent<Props> = ({
   setCurrentGuessArray,
   qardle,
 }: Props) => {
-  const [availableCards, setAvailableCards] = useState<APICard[]>([]);
+  const [availableCards, setAvailableCards] = useState<CardType[]>([]);
 
   useEffect(() => {
     getNewFullDeck();
@@ -38,7 +30,7 @@ const AvailableCardsDeck: React.FunctionComponent<Props> = ({
 
   const getNewFullDeck = async () => {
     try {
-      const response = await axios.get<APIDeck>("/new");
+      const response = await axios.get<Deck>("/new");
       const data = response.data;
 
       // console.log(data);
@@ -51,7 +43,7 @@ const AvailableCardsDeck: React.FunctionComponent<Props> = ({
   const getAllCards = async (deckID: string) => {
     try {
       const response = await axios.get<{
-        cards: APICard[];
+        cards: CardType[];
         deck_id: string;
         remaining: number;
         success: boolean;
@@ -66,7 +58,7 @@ const AvailableCardsDeck: React.FunctionComponent<Props> = ({
   };
 
   // console.log(availableCards);
-  // const renderedCards = availableCards?.map((card: APICard) => {
+  // const renderedCards = availableCards?.map((card: Card) => {
   //   <Card card={card} />;
   // });
 
@@ -74,8 +66,8 @@ const AvailableCardsDeck: React.FunctionComponent<Props> = ({
     <div className="availableCardsDeckContainer">
       {/* <ul>{renderedCards}</ul> */}
 
-      {availableCards?.map((card: APICard) => (
-        <Card key={card.code} code={card.code} image={card.image} />
+      {availableCards?.map((card: CardType) => (
+        <AvailableCard key={card.code} code={card.code} image={card.image} />
       ))}
     </div>
   );

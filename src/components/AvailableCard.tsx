@@ -5,7 +5,7 @@ interface Props {
   image: string;
 }
 
-function Card({ code, image }: Props) {
+function AvailableCard({ code, image }: Props) {
   function handleClick(e: React.MouseEvent<HTMLImageElement>): void {
     console.log(code);
   }
@@ -17,4 +17,4 @@ function Card({ code, image }: Props) {
   );
 }
 
-export default Card;
+export default AvailableCard;
