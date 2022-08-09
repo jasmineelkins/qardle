@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import AvailableCardsDeck from "./components/AvailableCardsDeck";
 import GuessedCardsGrid from "./components/GuessedCardsGrid";
 import Header from "./components/Header";
+
+// interface IGoalCards {
+//   goalCards: string[]
+// }
 
 function App() {
   // get full deck
@@ -18,11 +22,24 @@ function App() {
   // end game
   // populate buttons & onClick functions
 
+  const [goalCards, setGoalCards] = useState<string[]>([]);
+  const [currentGuessArray, setCurrentGuessArray] = useState<string[]>([
+    "none",
+    "none",
+    "none",
+    "none",
+    "none",
+  ]);
+
   return (
     <div className="pageContainer">
       <Header />
       <GuessedCardsGrid />
-      <AvailableCardsDeck />
+      <AvailableCardsDeck
+        currentGuessArray={currentGuessArray}
+        setCurrentGuessArray={setCurrentGuessArray}
+        goalCards={goalCards}
+      />
     </div>
   );
 }

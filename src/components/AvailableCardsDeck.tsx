@@ -3,22 +3,33 @@ import Card from "./Card";
 import axios from "../axios/instance";
 import { render } from "@testing-library/react";
 
-function AvailableCardsDeck() {
-  const [availableCards, setAvailableCards] = useState<APICard[]>([]);
+type APIDeck = {
+  deck_id: string;
+  remaining: number;
+  shuffled: boolean;
+  success: boolean;
+};
+type APICard = {
+  code: string;
+  image: string;
+  images: { svg: string; png: string };
+  suit: string;
+  value: string;
+};
 
-  type APIDeck = {
-    deck_id: string;
-    remaining: number;
-    shuffled: boolean;
-    success: boolean;
-  };
-  type APICard = {
-    code: string;
-    image: string;
-    images: { svg: string; png: string };
-    suit: string;
-    value: string;
-  };
+interface Props {
+  currentGuessArray: string[];
+  setCurrentGuessArray: (p: string[]) => void;
+  goalCards: string[];
+}
+
+// industry standard syntax:
+const AvailableCardsDeck: React.FunctionComponent<Props> = ({
+  currentGuessArray,
+  setCurrentGuessArray,
+  goalCards,
+}: Props) => {
+  const [availableCards, setAvailableCards] = useState<APICard[]>([]);
 
   useEffect(() => {
     getNewFullDeck();
@@ -67,6 +78,6 @@ function AvailableCardsDeck() {
       ))}
     </div>
   );
-}
+};
 
 export default AvailableCardsDeck;
