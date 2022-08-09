@@ -10,11 +10,11 @@ function App() {
   // set & render available cards +
   // set & render goal cards +
   // create guess grid
-  // add guess
-  // remove guess
+  // add guess to current row
+  // remove guess from current row
   // handle results styling
   // test match
-  // handle submit guess
+  // handle submit guess turn
   // create hints array
   // get hint
   // end game
@@ -22,7 +22,7 @@ function App() {
   // show backs of qards until end game
 
   const [qardle, setQardle] = useState<CardType[]>([]);
-  const [currentGuessArray, setCurrentGuessArray] = useState<CardType[][]>([]);
+  const [currentGuessArray, setCurrentGuessArray] = useState<CardType[]>([]);
 
   // const [currentGuessArray, setCurrentGuessArray] = useState<string[]>([
   //   "none",

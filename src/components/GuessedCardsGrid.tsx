@@ -3,17 +3,29 @@ import GuessedCard from "./GuessedCard";
 import { CardType } from "myTypes";
 
 interface Props {
-  currentGuessArray: CardType[][];
-  setCurrentGuessArray: (p: CardType[][]) => void;
+  currentGuessArray: CardType[];
+  setCurrentGuessArray: (p: CardType[]) => void;
   qardle: CardType[];
 }
 
-const GuessedCardsGrid: React.FunctionComponent<Props> = ({
+const GuessedCardsGrid: React.FC<Props> = ({
   currentGuessArray,
   setCurrentGuessArray,
   qardle,
-}: Props) => {
-  return <div className="guessedCardsGridContainer"></div>;
+}) => {
+  const nullArray: (CardType | null)[][] = [
+    [null, null, null, null, null],
+    [null, null, null, null, null],
+    [null, null, null, null, null],
+    [null, null, null, null, null],
+    [null, null, null, null, null],
+  ];
+
+  const renderedGrid = nullArray.map((row: (CardType | null)[]) =>
+    row.map((cell: CardType | null) => <GuessedCard cell={cell} />)
+  );
+
+  return <div className="guessedCardsGridContainer">{renderedGrid}</div>;
 };
 
 export default GuessedCardsGrid;

@@ -11,13 +11,13 @@ type Deck = {
 };
 
 interface Props {
-  currentGuessArray: CardType[][];
-  setCurrentGuessArray: (p: CardType[][]) => void;
+  currentGuessArray: CardType[];
+  setCurrentGuessArray: (p: CardType[]) => void;
   qardle: CardType[];
 }
 
 // industry standard syntax:
-const AvailableCardsDeck: React.FunctionComponent<Props> = ({
+const AvailableCardsDeck: React.FC<Props> = ({
   currentGuessArray,
   setCurrentGuessArray,
   qardle,
@@ -57,18 +57,29 @@ const AvailableCardsDeck: React.FunctionComponent<Props> = ({
     }
   };
 
-  // console.log(availableCards);
-  // const renderedCards = availableCards?.map((card: Card) => {
-  //   <Card card={card} />;
-  // });
+  const renderedCards = availableCards?.map((card: CardType) => (
+    <AvailableCard
+      key={card.code}
+      card={card}
+      currentGuessArray={currentGuessArray}
+      setCurrentGuessArray={setCurrentGuessArray}
+      qardle={qardle}
+    />
+  ));
 
   return (
     <div className="availableCardsDeckContainer">
-      {/* <ul>{renderedCards}</ul> */}
+      {renderedCards}
 
-      {availableCards?.map((card: CardType) => (
-        <AvailableCard key={card.code} code={card.code} image={card.image} />
-      ))}
+      {/* {availableCards?.map((card: CardType) => (
+        <AvailableCard
+          key={card.code}
+          card={card}
+          currentGuessArray={currentGuessArray}
+          setCurrentGuessArray={setCurrentGuessArray}
+          qardle={qardle}
+        />
+      ))} */}
     </div>
   );
 };
