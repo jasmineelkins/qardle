@@ -11,8 +11,8 @@ type Deck = {
 };
 
 interface Props {
-  currentGuessArray: CardType[];
-  setCurrentGuessArray: (p: CardType[]) => void;
+  currentGuessArray: string[];
+  setCurrentGuessArray: (p: string[]) => void;
   qardle: CardType[];
 }
 

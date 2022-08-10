@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Qard from "./Qard";
 import axios from "../axios/instance";
+import { CardType } from "myTypes";
 
 interface Props {
-  qardle: Card[];
-  setQardle: (p: Card[]) => void;
+  qardle: CardType[];
+  setQardle: (p: CardType[]) => void;
 }
 
-type Deck = {
+type APIDeck = {
   deck_id: string;
   remaining: number;
   shuffled: boolean;
@@ -29,7 +30,7 @@ function Qardle({ qardle, setQardle }: Props) {
 
   const getQards = async () => {
     try {
-      const response = await axios.get<Deck>(`/new/shuffle/?deck_count=1`);
+      const response = await axios.get<APIDeck>(`/new/shuffle/?deck_count=1`);
       const data = response.data;
 
       // console.log(data);
@@ -50,21 +51,21 @@ function Qardle({ qardle, setQardle }: Props) {
 
       const data = response.data;
       console.log("QARDLE: ", data.cards);
+
+      // data.cards.map((card) => setQardle([...qardle, card.code]));
       setQardle(data.cards);
     } catch (error) {
       console.error(error);
     }
   };
 
-  return (
-    <div className="qardleContainer">
-      {qardle
-        ? qardle?.map((card: Card) => (
-            <Qard key={card.code} code={card.code} image={card.image} />
-          ))
-        : null}
-    </div>
-  );
+  const renderQardle = qardle
+    ? qardle.map((card: CardType) => (
+        <Qard key={card.code} code={card.code} image={card.image} />
+      ))
+    : null;
+
+  return <div className="qardleContainer">{renderQardle}</div>;
 }
 
 export default Qardle;

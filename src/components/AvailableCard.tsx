@@ -3,8 +3,8 @@ import { CardType } from "myTypes";
 
 interface Props {
   card: CardType;
-  currentGuessArray: CardType[];
-  setCurrentGuessArray: (p: CardType[]) => void;
+  currentGuessArray: string[];
+  setCurrentGuessArray: (p: string[]) => void;
   qardle: CardType[];
 }
 
@@ -16,7 +16,7 @@ const AvailableCard: React.FC<Props> = ({
 }: Props) => {
   function handleClick(e: React.MouseEvent<HTMLImageElement>): void {
     console.log(card.code);
-    setCurrentGuessArray([...currentGuessArray, card]);
+    setCurrentGuessArray([...currentGuessArray, card.code]);
   }
 
   return (

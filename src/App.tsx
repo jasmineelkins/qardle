@@ -4,12 +4,13 @@ import GuessedCardsGrid from "./components/GuessedCardsGrid";
 import Header from "./components/Header";
 import Qardle from "./components/Qardle";
 import { CardType } from "myTypes";
+import ButtonsContainer from "./components/ButtonsContainer";
 
 function App() {
   // get full deck +
   // set & render available cards +
   // set & render goal cards +
-  // create guess grid
+  // create guess grid +
   // add guess to current row
   // remove guess from current row
   // handle results styling
@@ -22,7 +23,7 @@ function App() {
   // show backs of qards until end game
 
   const [qardle, setQardle] = useState<CardType[]>([]);
-  const [currentGuessArray, setCurrentGuessArray] = useState<CardType[]>([]);
+  const [currentGuessArray, setCurrentGuessArray] = useState<string[]>([]);
 
   // const [currentGuessArray, setCurrentGuessArray] = useState<string[]>([
   //   "none",
@@ -41,6 +42,7 @@ function App() {
         setCurrentGuessArray={setCurrentGuessArray}
         qardle={qardle}
       />
+      <ButtonsContainer />
       <AvailableCardsDeck
         currentGuessArray={currentGuessArray}
         setCurrentGuessArray={setCurrentGuessArray}
